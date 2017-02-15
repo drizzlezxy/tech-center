@@ -76,7 +76,7 @@ function parseTplByStretagy() {
 				name: 'index',
 				filepath: paths.page + option.page + '/',
 				content: pageContent,
-				subfix: 'jsx'
+				subfix: 'js'
 			};
 		},
 		'style': function(content, option) {
@@ -135,7 +135,7 @@ function readTplFiles() {
 	var contentMap = {};
 	var tplNames = {
 		tpl: 'index.tpl',
-		entry: 'jsx.tpl',
+		entry: 'js.tpl',
 		style: 'style.tpl'
 	};
 
