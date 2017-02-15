@@ -1,0 +1,24 @@
+@import '../_config.scss';
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.m-content { 
+    .m-header {
+    	font-size: 20px;
+    	&::after {
+    		content: 'CSS样式'
+    	}
+        
+    }
+
+    .m-body {
+        
+    }
+
+    .m-footer {
+        
+    }
+}

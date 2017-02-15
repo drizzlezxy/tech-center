@@ -8,6 +8,10 @@ var filePath = {
 };
 
 var pages = [{
+    name: 'HomePage/index',
+    entry: 'HomePage/index.js',
+    ftl: 'newPages/HomePage/index.html'
+},{
     name: 'Test/index',
     entry: 'Test/index.js',
     ftl: 'newPages/Test/index.html'

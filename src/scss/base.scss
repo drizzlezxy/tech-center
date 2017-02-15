@@ -146,14 +146,6 @@ input::-ms-clear, input::-ms-reveal {
   content: ".";
 }
 
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../../res/fonts/fontawesome-webfont.eot');
-  src: url('../../res/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../../res/fonts/fontawesome-webfont.woff2') format('woff2'), url('../../res/fonts/fontawesome-webfont.woff') format('woff'), url('../../res/fonts/fontawesome-webfont.ttf') format('truetype'), url('../../res/fonts/fontawesome-webfont.svg') format('svg');
-  font-weight: normal;
-  font-style: normal
-}
-
 .f-fl {
   float: left;
 }
