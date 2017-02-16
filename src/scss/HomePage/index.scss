@@ -1,24 +1,70 @@
 @import '../_config.scss';
-html, body {
-	width: 100%;
-	height: 100%;
-	overflow: auto;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 
-.m-content { 
+.m-content {
     .m-header {
-    	font-size: 20px;
-    	&::after {
-    		content: 'CSS样式'
-    	}
-        
+        font-size: 20px;
+        &::after {
+            content: 'CSS样式'
+        }
     }
+    .m-body {}
+    .m-footer {}
+}
 
-    .m-body {
-        
+.container {
+    .progress {
+        height: 25px;
+        background: #262626;
+        padding: 5px;
+        overflow: visible;
+        border-radius: 20px;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #7992a8;
+        margin-top: 50px;
     }
-
-    .m-footer {
-        
+    .progress .progress-bar {
+        border-radius: 20px;
+        position: relative;
+        animation: animate-positive 2s;
+    }
+    .progress .progress-value {
+        display: block;
+        padding: 3px 7px;
+        font-size: 13px;
+        color: #fff;
+        border-radius: 4px;
+        background: #191919;
+        border: 1px solid #000;
+        position: absolute;
+        top: -40px;
+        right: -10px;
+    }
+    .progress .progress-value:after {
+        content: "";
+        border-top: 10px solid #191919;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        position: absolute;
+        bottom: -6px;
+        left: 26%;
+    }
+    .progress-bar.active {
+        animation: reverse progress-bar-stripes 0.40s linear infinite, animate-positive 2s;
+    }
+    @-webkit-keyframes animate-positive {
+        0% {
+            width: 0;
+        }
+    }
+    @keyframes animate-positive {
+        0% {
+            width: 0;
+        }
     }
 }
