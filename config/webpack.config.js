@@ -26,14 +26,14 @@ var webpackConfig = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      'extend': path.join(__dirname, './src/javascript/extend'),
-      'page': path.join(__dirname, './src/javascript/page'),
-      'scss': path.join(__dirname, './src/scss'),
-      'pages': path.join(__dirname, './src/newPages'),
-      'images': path.join(__dirname, './res/images'),
-      'data': path.join(__dirname, './src/javascript/data'),
-      'font': path.join(__dirname, './res/font'),
-      'jquery': path.join(__dirname, './node_modules/jquery/dist/jquery.min.js')
+      'extend': path.join(__dirname, '../src/javascript/extend'),
+      'page': path.join(__dirname, '../src/javascript/page'),
+      'scss': path.join(__dirname, '../src/scss'),
+      'pages': path.join(__dirname, '../src/newPages'),
+      'images': path.join(__dirname, '../res/images'),
+      'data': path.join(__dirname, '../src/javascript/data'),
+      'font': path.join(__dirname, '../res/font'),
+      'jquery': path.join(__dirname, '../node_modules/jquery/dist/jquery.min.js')
     }
   },
   module: {
@@ -57,31 +57,9 @@ var webpackConfig = {
   },
   plugins: [
     autoprefixer,
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "common",
-      filename: "common.[hash].js",
-      chunks: defaultSettings.chunks
-    }),
+    new webpack.HotModuleReplacementPlugin(),
     extractCSS,
     extractSCSS,
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false
-      },
-      mangle: {
-        except: ['$super', '$', 'exports', 'require']
-      },
-      output: {
-        comments: false
-      }
-    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -96,7 +74,11 @@ var webpackConfig = {
 
 function injectEntry() {
   defaultSettings.pagesToPath().forEach(function(item) {
-    webpackConfig.entry[item.name] = item.entry;
+    webpackConfig.entry[item.name] = [
+      'webpack-dev-server/client?http://localhost:' + defaultSettings.port,
+      'webpack/hot/only-dev-server',
+      item.entry
+    ];
   })
 }
 
@@ -106,12 +88,8 @@ function injectHtmlWebpack() {
       new HtmlWebpackPlugin({
         filename: item.ftl,
         template: item.templates,
-        chunks: ['common', item.name],
+        chunks: [item.name],
         inject: true,
-        minify: {
-          removeComments: true,
-          collapseWhitespace: false
-        }
       })
     );
   });

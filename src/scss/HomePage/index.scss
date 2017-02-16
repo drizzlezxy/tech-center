@@ -31,7 +31,7 @@ body {
     .progress .progress-bar {
         border-radius: 20px;
         position: relative;
-        animation: animate-positive 2s;
+        animation: animate-positive 0.6s;
     }
     .progress .progress-value {
         display: block;
@@ -55,16 +55,16 @@ body {
         left: 26%;
     }
     .progress-bar.active {
-        animation: reverse progress-bar-stripes 0.40s linear infinite, animate-positive 2s;
+        animation: reverse progress-bar-stripes 0.30s linear infinite, animate-positive 0.6s;
     }
     @-webkit-keyframes animate-positive {
         0% {
-            width: 0;
+            width: 0%;
         }
     }
     @keyframes animate-positive {
         0% {
-            width: 0;
+            width: 0%;
         }
     }
 }

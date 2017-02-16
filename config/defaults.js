@@ -1,9 +1,9 @@
 var path = require('path');
 var chunks = [];
 var filePath = {
-    srcPath: path.join(__dirname, './src'),
-    tplPath: path.join(__dirname, './src'),
-    build: path.join(__dirname, './build'),
+    srcPath: path.join(__dirname, '../src'),
+    tplPath: path.join(__dirname, '../src'),
+    build: path.join(__dirname, '../build'),
     publicPath: '/build/'
 };
 
@@ -11,7 +11,7 @@ var pages = [{
     name: 'HomePage/index',
     entry: 'HomePage/index.js',
     ftl: 'newPages/HomePage/index.html'
-},{
+}, {
     name: 'Test/index',
     entry: 'Test/index.js',
     ftl: 'newPages/Test/index.html'
